@@ -32,6 +32,23 @@ const Show = () => {
     getUsers();
   };
 
+  const confirmDelete = (id) => {
+    MySwal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteUser(id);
+        Swal.fire("Deleted!", "Your file has been deleted", "success");
+      }
+    });
+  };
+
   useEffect(() => {
     getUsers();
   }, []);
@@ -68,7 +85,7 @@ const Show = () => {
                       </Link>
                       <button
                         onClick={() => {
-                          deleteUser(user.id);
+                          confirmDelete(user.id);
                         }}
                         className="btn btn-danger"
                       >
