@@ -1,25 +1,20 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebaseConfig/firebase";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { getDoc, updateDoc, doc } from "firebase/firestore";
+import { db } from "../../firebaseConfig/firebase";
+import { editUser } from "../../controllers/userController.ts";
 
-const Create = () => {
+const Edit = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { id } = useParams();
 
-  const usersCollection = collection(db, "users");
-
-  const store = async (e) => {
+  const update = async (e) => {
     e.preventDefault();
-    await addDoc(usersCollection, {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-    });
+    editUser(id, firstName, lastName, email, password);
     navigate("/");
   };
 
@@ -27,8 +22,8 @@ const Create = () => {
     <div className="container">
       <div className="row">
         <div className="col">
-          <h1>Create User</h1>
-          <form onSubmit={store}>
+          <h1>Edit User</h1>
+          <form onSubmit={update}>
             <div className="mb-3">
               <label className="form-label">Name</label>
               <input
@@ -70,7 +65,7 @@ const Create = () => {
             </div>
 
             <button type="submit" className="btn btn-primary">
-              Create
+              Update
             </button>
           </form>
         </div>
@@ -79,4 +74,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default Edit;

@@ -7,29 +7,29 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
-import { db } from "../firebaseConfig/firebase";
+import { db } from "../../firebaseConfig/firebase";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { async } from "@firebase/util";
+import { deleteUser, getUsers } from "../../controllers/userController.ts";
 
 const MySwal = withReactContent(Swal);
 
 const Show = () => {
   const [users, setUsers] = useState([]);
 
-  const usersCollection = collection(db, "users");
-
-  const getUsers = async () => {
-    const data = await getDocs(usersCollection);
-    //console.log(data.docs);
-    setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    console.log(users);
+  const showUsers = async () => {
+    getUsers().then((users) => {
+      setUsers(users);
+      console.log(users);
+    });
   };
 
-  const deleteUser = async (id) => {
-    const userDoc = doc(db, "users", id);
-    await deleteDoc(userDoc);
-    getUsers();
+  const deleteU = async (id) => {
+    console.log(id);
+    deleteUser(id).then((user) => {
+      showUsers();
+    });
   };
 
   const confirmDelete = (id) => {
@@ -43,14 +43,15 @@ const Show = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteUser(id);
+        console.log(id);
+        deleteU(id);
         Swal.fire("Deleted!", "Your file has been deleted", "success");
       }
     });
   };
 
   useEffect(() => {
-    getUsers();
+    showUsers();
   }, []);
 
   return (
@@ -85,6 +86,8 @@ const Show = () => {
                       </Link>
                       <button
                         onClick={() => {
+                          console.log(user.id);
+                          console.log(user);
                           confirmDelete(user.id);
                         }}
                         className="btn btn-danger"

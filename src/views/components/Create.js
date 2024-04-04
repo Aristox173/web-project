@@ -1,47 +1,28 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getDoc, updateDoc, doc } from "firebase/firestore";
-import { db } from "../firebaseConfig/firebase";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../firebaseConfig/firebase";
+import { createUser } from "../../controllers/userController.ts";
 
-const Edit = () => {
+const Create = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { id } = useParams();
 
-  const update = async (e) => {
+  const store = async (e) => {
     e.preventDefault();
-    const user = doc(db, "users", id);
-    const data = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-    };
-    await updateDoc(user, data);
+    await createUser(firstName, lastName, email, password);
     navigate("/");
-  };
-
-  const getUserById = async (id) => {
-    const user = await getDoc(doc(db, "users", id));
-    if (user.exists()) {
-      setFirstName(user.firstName);
-      setLastName(user.lastName);
-      setEmail(user.email);
-      setPassword(user.password);
-    } else {
-      console.log("El usuario no existe!");
-    }
   };
 
   return (
     <div className="container">
       <div className="row">
         <div className="col">
-          <h1>Edit User</h1>
-          <form onSubmit={update}>
+          <h1>Create User</h1>
+          <form onSubmit={store}>
             <div className="mb-3">
               <label className="form-label">Name</label>
               <input
@@ -83,7 +64,7 @@ const Edit = () => {
             </div>
 
             <button type="submit" className="btn btn-primary">
-              Update
+              Create
             </button>
           </form>
         </div>
@@ -92,4 +73,4 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export default Create;

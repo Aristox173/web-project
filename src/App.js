@@ -1,7 +1,7 @@
 import "./App.css";
-import Show from "./components/Show";
-import Create from "./components/Create";
-import Edit from "./components/Edit";
+import Show from "./views/components/Show";
+import Create from "./views/components/Create";
+import Edit from "./views/components/Edit";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
