@@ -1,24 +1,23 @@
 import React, { useState } from "react";
 import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig/firebase";
-import { Navigate } from "react-router-dom";
 
-function Login({ user }) {
+function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoginActive, setIsLoginActive] = useState(false);
+  const [isSignUpActive, setIsSignUpActive] = useState(false);
   const navigate = useNavigate();
 
   const handleMethodChange = () => {
-    setIsLoginActive(!isLoginActive);
-    navigate("/register");
+    setIsSignUpActive(!isSignUpActive);
+    navigate("/");
   };
 
-  const handleSignIn = () => {
+  const handleSignUp = () => {
     if (!email || !password) return;
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
@@ -33,15 +32,11 @@ function Login({ user }) {
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
 
-  if (user) {
-    return <Navigate to="/users"></Navigate>;
-  }
-
   return (
     <div className="login">
       <div className="login-container">
         <div className="login-header">
-          <h1>Login</h1>
+          <h1>Register</h1>
         </div>
         <div className="login-form">
           <form>
@@ -57,11 +52,11 @@ function Login({ user }) {
               className="login-input"
               onChange={handlePasswordChange}
             />
-            <button type="button" className="login-btn" onClick={handleSignIn}>
-              Login
+            <button type="button" className="login-btn" onClick={handleSignUp}>
+              Register
             </button>
           </form>
-          <a onClick={handleMethodChange}>Sign Up</a>
+          <a onClick={handleMethodChange}>Sign In</a>
         </div>
         <div className="login-footer"></div>
       </div>
@@ -69,4 +64,4 @@ function Login({ user }) {
   );
 }
 
-export default Login;
+export default Register;

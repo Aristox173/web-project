@@ -7,16 +7,22 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
-import { db } from "../../firebaseConfig/firebase";
+import { auth, db } from "../../firebaseConfig/firebase";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { async } from "@firebase/util";
 import { deleteUser, getUsers } from "../../controllers/userController.ts";
+import { signOut } from "firebase/auth";
 
 const MySwal = withReactContent(Swal);
 
 const Show = () => {
   const [users, setUsers] = useState([]);
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => console.log("Sign Out"))
+      .catch((error) => console.log(error));
+  };
 
   const showUsers = async () => {
     getUsers().then((users) => {
@@ -102,6 +108,7 @@ const Show = () => {
           </div>
         </div>
       </div>
+      <button onClick={handleSignOut}>Sign Out</button>
     </>
   );
 };
