@@ -6,7 +6,7 @@ import Edit from "./views/components/Edit";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { ProtectedRoute } from "./views/components/ProtectedRoute";
+import { ProtectedRoute } from "./controllers/ProtectedRoute.js";
 import { auth } from "./firebaseConfig/firebase";
 
 function App() {

@@ -1,0 +1,32 @@
+.signOut-btn {
+  width: 10%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signOut-btn:hover {
+  background-color: crimson;
+}
+
+@media (min-width: 768px) {
+  .signOut-btn {
+    margin-left: 120px; /* Adjust the margin for screens larger than 768px */
+  }
+}
+
+@media (max-width: 767px) {
+  .signOut-btn {
+    margin-left: 10px; /* Adjust the margin for screens smaller than or equal to 767px */
+    width: 20%;
+  }
+}
+
+.icon-box {
+  margin-right: 20px;
+}

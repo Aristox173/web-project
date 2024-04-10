@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig/firebase";
 import { createUser } from "../../controllers/userController.ts";
+import Swal from "sweetalert2";
 
 const Create = () => {
   const [firstName, setFirstName] = useState("");
@@ -13,6 +14,11 @@ const Create = () => {
 
   const store = async (e) => {
     e.preventDefault();
+    const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+    if (!emailRegex.test(email)) {
+      Swal.fire("Please enter a valid email address!");
+      return;
+    }
     await createUser(firstName, lastName, email, password);
     navigate("/");
   };
@@ -30,6 +36,7 @@ const Create = () => {
                 onChange={(e) => setFirstName(e.target.value)}
                 type="text"
                 className="form-control"
+                required
               />
             </div>
 
@@ -40,6 +47,7 @@ const Create = () => {
                 onChange={(e) => setLastName(e.target.value)}
                 type="text"
                 className="form-control"
+                required
               />
             </div>
 
@@ -50,6 +58,7 @@ const Create = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 type="text"
                 className="form-control"
+                required
               />
             </div>
 
@@ -60,6 +69,7 @@ const Create = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 type="text"
                 className="form-control"
+                required
               />
             </div>
 

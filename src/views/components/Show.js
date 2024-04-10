@@ -13,6 +13,7 @@ import withReactContent from "sweetalert2-react-content";
 import { async } from "@firebase/util";
 import { deleteUser, getUsers } from "../../controllers/userController.ts";
 import { signOut } from "firebase/auth";
+import "../../styles/crud.css";
 
 const MySwal = withReactContent(Swal);
 
@@ -66,7 +67,7 @@ const Show = () => {
         <div className="row">
           <div className="col">
             <div className="d-grid gap-2">
-              <Link to="/create" className="btn btn-secondary mt-2 mb-2">
+              <Link to="/create" className="btn btn-success mt-2 mb-2">
                 Create
               </Link>
             </div>
@@ -86,8 +87,11 @@ const Show = () => {
                     <td>{user.firstName}</td>
                     <td>{user.lastName}</td>
                     <td>{user.email}</td>
-                    <td>
-                      <Link to={`/edit/${user.id}`} className="btn btn-light">
+                    <td className="icon-box">
+                      <Link
+                        to={`/edit/${user.id}`}
+                        className="btn btn-light icon-box"
+                      >
                         <i className="fa-solid fa-pencil"></i>
                       </Link>
                       <button
@@ -96,7 +100,7 @@ const Show = () => {
                           console.log(user);
                           confirmDelete(user.id);
                         }}
-                        className="btn btn-danger"
+                        className="btn btn-danger icon-box"
                       >
                         <i className="fa-solid fa-trash"></i>
                       </button>
@@ -108,7 +112,9 @@ const Show = () => {
           </div>
         </div>
       </div>
-      <button onClick={handleSignOut}>Sign Out</button>
+      <button className="signOut-btn" onClick={handleSignOut}>
+        Sign Out
+      </button>
     </>
   );
 };

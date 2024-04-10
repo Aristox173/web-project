@@ -61,7 +61,9 @@ function Login({ user }) {
               Login
             </button>
           </form>
-          <a onClick={handleMethodChange}>Sign Up</a>
+          <button className="sign-btn" onClick={handleMethodChange}>
+            Sign Up
+          </button>
         </div>
         <div className="login-footer"></div>
       </div>

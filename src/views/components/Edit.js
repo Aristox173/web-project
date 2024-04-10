@@ -31,6 +31,7 @@ const Edit = () => {
                 onChange={(e) => setFirstName(e.target.value)}
                 type="text"
                 className="form-control"
+                required
               />
             </div>
 
@@ -41,6 +42,7 @@ const Edit = () => {
                 onChange={(e) => setLastName(e.target.value)}
                 type="text"
                 className="form-control"
+                required
               />
             </div>
 
@@ -51,6 +53,7 @@ const Edit = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 type="text"
                 className="form-control"
+                required
               />
             </div>
 
@@ -61,6 +64,7 @@ const Edit = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 type="text"
                 className="form-control"
+                required
               />
             </div>
 
