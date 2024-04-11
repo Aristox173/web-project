@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Proyecto CRUD con Autenticación de Usuarios
+Este proyecto es una aplicación web MVC que incluye un CRUD básico y un sistema de autenticación de usuarios con enlaces protegidos. Está desarrollado utilizando React y Firebase, aprovechando Firestore Database y Authentication.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Tabla de Contenidos
+1. [Funcionalidades](#funcionalidades)
+2. [Tecnologías Utilizadas](#tecnologías-utilizadas)
+3. [Configuración](#configuración)
+4. [Ejecución](#ejecución)
 
-## Available Scripts
+## Funcionalidades
+* **CRUD Básico:** La aplicación permite realizar operaciones CRUD (Crear, Leer, Actualizar y Borrar) sobre una colección de datos.
+* **Autenticación de Usuarios:** Implementa un sistema de autenticación de usuarios utilizando Firebase Authentication.
+* **Rutas Protegidas:** Las rutas que requieren autenticación están protegidas y solo son accesibles para usuarios autenticados.
 
-In the project directory, you can run:
+## Tecnologías Utilizadas
+* **React:** Una biblioteca de JavaScript para construir interfaces de usuario.
+* **Firebase:** Una plataforma de desarrollo de aplicaciones móviles y web desarrollada por Google.
+  * **Firestore Database:** Una base de datos en la nube NoSQL de Firebase que permite el almacenamiento y la sincronización de datos en tiempo real.
+  * **Authentication:** Un servicio de Firebase que proporciona funciones de autenticación de usuarios.
 
-### `npm start`
+## Configuración
+Antes de ejecutar la aplicación, asegúrate de seguir estos pasos de configuración:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Firebase Setup:
+  * Crea un proyecto en Firebase Console.
+  * Habilita Firebase Authentication y Firestore Database en el panel de control de tu proyecto.
+  * Configura las reglas de seguridad de Firestore según tus necesidades de acceso.
+2. Configuración del Proyecto:
+  * Clona este repositorio en tu máquina local.
+  * Instala las dependencias del proyecto utilizando npm install.
+  * Configura tu archivo .env con las credenciales de Firebase (consulta .env.example para ver qué variables son necesarias).
+## Ejecución
+Una vez que hayas configurado el proyecto correctamente, puedes ejecutarlo localmente utilizando el siguiente comando:
+```
+npm run start
+```
