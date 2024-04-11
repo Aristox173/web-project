@@ -2,14 +2,26 @@
 Este proyecto es una aplicación web MVC que incluye un CRUD básico y un sistema de autenticación de usuarios con enlaces protegidos. Está desarrollado utilizando React y Firebase, aprovechando Firestore Database y Authentication.
 
 ## Tabla de Contenidos
-1. [Funcionalidades](#funcionalidades)
-2. [Tecnologías Utilizadas](#tecnologías-utilizadas)
-3. [Configuración](#configuración)
-4. [Ejecución](#ejecución)
+- [Proyecto CRUD con Autenticación de Usuarios](#proyecto-crud-con-autenticación-de-usuarios)
+  - [Tabla de Contenidos](#tabla-de-contenidos)
+  - [Funcionalidades](#funcionalidades)
+  - [Tecnologías Utilizadas](#tecnologías-utilizadas)
+  - [Configuración](#configuración)
+  - [Ejecución](#ejecución)
 
 ## Funcionalidades
 * **CRUD Básico:** La aplicación permite realizar operaciones CRUD (Crear, Leer, Actualizar y Borrar) sobre una colección de datos.
+
+![alt text][image1]
+
+[image1]: /public/images/CRUD.png "Diagram"
+
 * **Autenticación de Usuarios:** Implementa un sistema de autenticación de usuarios utilizando Firebase Authentication.
+
+![alt text][image2]
+
+[image2]: /public/images/Diagrama.jpg "Diagram"
+
 * **Rutas Protegidas:** Las rutas que requieren autenticación están protegidas y solo son accesibles para usuarios autenticados.
 
 ## Tecnologías Utilizadas
